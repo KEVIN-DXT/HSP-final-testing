@@ -1,0 +1,590 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+   <!-- Aesthetic Palette: Safety Amber, Deep Blue, and Soft White for professionalism and impact. -->
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>HSPBooking - Interactive Road Safety Report</title>
+   <script src="https://cdn.tailwindcss.com"></script>
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+   <style>
+       body {
+           font-family: 'Inter', sans-serif;
+       }
+       .chart-container {
+           position: relative;
+           width: 100%;
+           height: 45vh; /* Increased height for better visibility */
+           max-height: 500px;
+       }
+       /* Custom styling for subtle header shadow on scroll */
+       .header-scrolled {
+           box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+       }
+       /* Custom scrollbar to keep aesthetics clean */
+       /*
+       ::-webkit-scrollbar { width: 8px; }
+       ::-webkit-scrollbar-track { background: #f1f1f1; }
+       ::-webkit-scrollbar-thumb { background: #d97706; border-radius: 4px; }
+       ::-webkit-scrollbar-thumb:hover { background: #b45309; }
+       */
+   </style>
+</head>
+<body class="bg-slate-50 text-slate-700">
+
+
+   <header id="header" class="bg-white/95 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div class="flex items-center justify-between h-16">
+               <div class="flex items-center">
+                   <span class="font-extrabold text-2xl text-slate-900">HSP<span class="text-amber-600">Booking</span></span>
+               </div>
+               <nav class="hidden md:flex space-x-8">
+                   <a href="#home" class="font-medium text-slate-700 hover:text-amber-600 transition-colors py-1 border-b-2 border-transparent hover:border-amber-600">Home</a>
+                   <!-- Links updated to use paths on the main domain -->
+                   <a href="https://hspbooking.com/about" target="_blank" class="font-medium text-slate-700 hover:text-amber-600 transition-colors py-1 border-b-2 border-transparent hover:border-amber-600">About Us</a>
+                   <a href="https://hspbooking.com/contact" target="_blank" class="font-medium text-slate-700 hover:text-amber-600 transition-colors py-1 border-b-2 border-transparent hover:border-amber-600">Contact Us</a>
+               </nav>
+           </div>
+       </div>
+   </header>
+
+
+   <main>
+       <!-- Hero Section (Now part of the main article for impact) -->
+       <section id="home" class="pt-24 bg-gradient-to-br from-white to-slate-100">
+           <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+               <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight mb-6 md:mb-8 text-center md:text-left">
+                   Road Safety in India: <span class="text-amber-600 block sm:inline">A Wake-Up Call</span>
+               </h1>
+               <div class="h-1 bg-amber-500 w-24 mx-auto md:mx-0 mb-8 rounded-full"></div>
+              
+               <!-- Introduction -->
+               <p class="mt-4 text-xl text-slate-600 leading-relaxed italic border-l-4 border-amber-400 pl-4">
+                   India’s roads tell two stories — one of progress, and one of pain. Road safety here isn’t just a topic for seminars; it’s a matter of <strong>life and death, every single day</strong>.
+               </p>
+              
+               <h2 class="text-2xl font-bold text-slate-800 mt-12 mb-4">The Urgent Need for Action</h2>
+               <p class="mt-4 text-lg text-slate-700 leading-relaxed">
+                   According to the <strong>Ministry of Road Transport and Highways (MoRTH) Report 2023</strong>, over <strong>1.68 lakh</strong> people died in road accidents in India in a single year. That’s almost <strong>460 deaths every day</strong>. This report explores the core issues, case studies, and practical solutions we must embrace.
+               </p>
+
+
+               <!-- Separator for Visual Clarity -->
+               <div class="my-12 border-b border-slate-200"></div>
+
+
+               <!-- The State of Road Safety in India: The Numbers Speak -->
+               <h2 class="text-3xl font-extrabold text-slate-900 mt-12 mb-6">The Data Speaks Volumes</h2>
+               <p class="mt-4 text-lg text-slate-700 leading-relaxed">
+                   The National Crime Records Bureau (NCRB) and <strong>MoRTH</strong> data show alarming trends. Speeding alone causes about <strong>70%</strong> of total fatalities. Two-wheelers account for <strong>44%</strong> of all deaths. The tragic part is that nearly <strong>80% of these deaths were preventable</strong>.
+               </p>
+               <ul class="list-disc pl-8 mt-6 text-slate-700 space-y-2 text-lg">
+                   <li><strong>1.68 lakh deaths</strong> and over <strong>4.6 lakh injuries</strong> reported annually.</li>
+                   <li><strong>Two-wheelers</strong> are involved in <strong>44%</strong> of fatal accidents.</li>
+                   <li><strong>Pedestrians</strong> form <strong>17%</strong> of total victims.</li>
+               </ul>
+              
+               <!-- START: Image for Road Accidents - Updated with user-provided URL and better styling -->
+               <div class="mt-10 mb-12 flex justify-center">
+                   <img src="https://i.postimg.cc/W1d76jGD/Accidents.avif"
+                        alt="Visual representation of road accident statistics"
+                        class="w-full h-auto max-w-xl rounded-2xl shadow-xl ring-4 ring-amber-500/20 object-cover transform hover:scale-[1.02] transition duration-500"
+                        onerror="this.style.display='none'; this.after(document.createElement('div').textContent = '⚠️ Image Failed to Load: Road Accident Statistics');">
+               </div>
+               <!-- END: Image for Road Accidents -->
+              
+               <div class="my-12 border-b border-slate-200"></div>
+
+
+
+
+               <!-- Why Are Indian Roads So Dangerous? -->
+               <h2 class="text-3xl font-extrabold text-slate-900 mt-12 mb-6">The Four Core Dangers</h2>
+               <p class="mt-4 text-lg text-slate-700 leading-relaxed">
+                   Accidents are rarely single-factor events. They are usually a mix of poor design, lack of discipline, and negligence.
+               </p>
+              
+               <div class="space-y-6 mt-8">
+                   <div class="p-4 bg-white rounded-lg shadow-md border-l-4 border-red-500">
+                       <h3 class="text-xl font-semibold text-slate-800 mb-1">1. Poor Road Engineering</h3>
+                       <p class="text-base text-slate-600 leading-relaxed">
+                           Sharp blind curves, sudden potholes, and missing signboards are everywhere. CRRI reports that <strong>40% of roads don’t meet safety design standards.</strong>
+                       </p>
+                   </div>
+                   <div class="p-4 bg-white rounded-lg shadow-md border-l-4 border-red-500">
+                       <h3 class="text-xl font-semibold text-slate-800 mb-1">2. Lack of Road Discipline</h3>
+                       <p class="text-base text-slate-600 leading-relaxed">
+                           Ignoring lane markings, jumping signals, and driving on the wrong side has become dangerously normalized.
+                       </p>
+                   </div>
+                   <div class="p-4 bg-white rounded-lg shadow-md border-l-4 border-red-500">
+                       <h3 class="text-xl font-semibold text-slate-800 mb-1">3. Overloaded and Unfit Vehicles</h3>
+                       <p class="text-base text-slate-600 leading-relaxed">
+                           From trucks carrying double loads to buses running with faulty brakes — vehicle fitness is often compromised for profit.
+                       </p>
+                   </div>
+                   <div class="p-4 bg-white rounded-lg shadow-md border-l-4 border-red-500">
+                       <h3 class="text-xl font-semibold text-slate-800 mb-1">4. Human Negligence (The 90% Factor)</h3>
+                       <p class="text-base text-slate-600 leading-relaxed">
+                           <strong>90% of accidents are caused by human error</strong>—overspeeding, drunk driving, mobile use, and fatigue.
+                       </p>
+                   </div>
+               </div>
+              
+               <div class="my-12 border-b border-slate-200"></div>
+
+
+               <!-- Case Studies That Expose the Truth -->
+               <h2 class="text-3xl font-extrabold text-slate-900 mt-12 mb-6">Real-World Case Studies</h2>
+               <p class="text-lg text-slate-700 leading-relaxed mb-8">
+                   These tragic examples underscore the direct link between simple rule-breaking and fatal outcomes.
+               </p>
+              
+               <div class="space-y-8">
+                   <div class="p-6 bg-amber-50 rounded-xl shadow-lg border-l-8 border-amber-600">
+                       <h3 class="text-2xl font-bold text-amber-700 mb-2">Case Study 1: The Delhi-Meerut Expressway Tragedy</h3>
+                       <p class="text-lg text-slate-700 leading-relaxed">
+                           A young engineer lost his life after crashing into a divider, driving at <strong>148 km/h</strong> and <strong>not wearing a seatbelt</strong>.
+                           <br>
+                           <strong class="text-slate-800 italic mt-2 block">👉 Lesson: Safety gear works at all speeds. Use it.</strong>
+                       </p>
+                   </div>
+
+
+                   <div class="p-6 bg-amber-50 rounded-xl shadow-lg border-l-8 border-amber-600">
+                       <h3 class="text-2xl font-bold text-amber-700 mb-2">Case Study 2: Pune Drunk Driving Case (2023)</h3>
+                       <p class="text-lg text-slate-700 leading-relaxed">
+                           A <strong>17-year-old boy</strong> driving a luxury car under the influence killed two professionals.
+                           <br>
+                           <strong class="text-slate-800 italic mt-2 block">👉 Lesson: Road safety starts with strict parental and social responsibility.</strong>
+                       </p>
+                   </div>
+
+
+                   <div class="p-6 bg-amber-50 rounded-xl shadow-lg border-l-8 border-amber-600">
+                       <h3 class="text-2xl font-bold text-amber-700 mb-2">Case Study 3: Tamil Nadu’s Enforcement Success</h3>
+                       <p class="text-lg text-slate-700 leading-relaxed">
+                           Tamil Nadu’s strict helmet enforcement drive in 2019 <strong>reduced two-wheeler fatalities by 25%</strong>.
+                           <br>
+                           <strong class="text-slate-800 italic mt-2 block">👉 Lesson: Enforcement + Public compliance = immediate, measurable change.</strong>
+                       </p>
+                   </div>
+               </div>
+              
+               <div class="my-12 border-b border-slate-200"></div>
+
+
+               <!-- Insights from Road Safety Surveys & Mistakes -->
+               <h2 class="text-3xl font-extrabold text-slate-900 mt-12 mb-6">Our Behavioral Crisis: Common Mistakes</h2>
+              
+               <div class="grid md:grid-cols-2 gap-8">
+                   <div>
+                       <h3 class="text-xl font-semibold text-slate-800 mb-3 border-b pb-2">Survey Insights</h3>
+                       <ul class="list-disc pl-6 mt-4 text-slate-700 space-y-2 text-lg">
+                           <li><strong>47%</strong> of two-wheeler riders don’t wear helmets regularly.</li>
+                           <li><strong>56%</strong> of car occupants skip seatbelts.</li>
+                           <li><strong>70%</strong> admit to using phones while driving.</li>
+                           <li><strong>42%</strong> feel enforcement of rules is lax.</li>
+                       </ul>
+                   </div>
+                   <div>
+                       <h3 class="text-xl font-semibold text-slate-800 mb-3 border-b pb-2">Top 5 Mistakes</h3>
+                       <ol class="list-decimal pl-6 mt-4 text-slate-700 space-y-2 text-lg">
+                           <li>Overtaking aggressively from the left.</li>
+                           <li>Constant mobile phone use and distraction.</li>
+                           <li>Parking irresponsibly, blocking traffic.</li>
+                           <li>Driving without sufficient rest/sleep.</li>
+                           <li>Ignoring required vehicle maintenance.</li>
+                       </ol>
+                   </div>
+               </div>
+
+
+               <div class="my-12 border-b border-slate-200"></div>
+
+
+
+
+               <!-- The Role of Technology and Policy -->
+               <h2 class="text-3xl font-extrabold text-slate-900 mt-12 mb-6">Policy and Technology: The Future Shield</h2>
+              
+               <div class="grid md:grid-cols-2 gap-8">
+                   <div>
+                       <h3 class="text-xl font-semibold text-slate-800 mb-3 border-b pb-2 text-amber-600">Government Initiatives</h3>
+                       <ul class="list-disc pl-6 mt-4 text-slate-700 space-y-2 text-lg">
+                           <li>**Motor Vehicles Act 2019**: Increased penalties for strict compliance.</li>
+                           <li>**iRAD System**: Integrated Road Accident Database for real-time analysis.</li>
+                           <li>Identification and redesign of **5,000+ blackspots**.</li>
+                       </ul>
+                   </div>
+                   <div>
+                       <h3 class="text-xl font-semibold text-slate-800 mb-3 border-b pb-2 text-amber-600">Technology's Role</h3>
+                       <ul class="list-disc pl-6 mt-4 text-slate-700 space-y-2 text-lg">
+                           <li>AI-based **speed cameras** and monitoring systems.</li>
+                           <li>Smart helmets with **ignition sensors**.</li>
+                           <li>**GPS fleet tracking** for commercial vehicle management.</li>
+                       </ul>
+                   </div>
+               </div>
+              
+               <!-- Conclusion: The Road is a Shared Space, Not a Racetrack -->
+               <div class="mt-16 pt-8 border-t-2 border-slate-300">
+                   <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Conclusion: Shared Responsibility</h2>
+                   <p class="text-xl text-slate-800 leading-relaxed font-bold italic p-4 bg-green-50 rounded-xl shadow-lg border-l-4 border-green-600">
+                       The goal is not to reach faster — <strong>the goal is to reach safely</strong>. If every road user adopted just three rules—no speeding, no drunk driving, always use safety gear—we could save over <strong>50,000 lives each year</strong>. Road safety is not about rules; it is about <strong>responsibility</strong>.
+                   </p>
+               </div>
+           </div>
+       </section>
+      
+       <!-- Focus Areas Section - Styling enhanced -->
+       <section id="focus" class="py-16 sm:py-24 bg-white shadow-inner">
+           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+               <div class="text-center">
+                   <h2 class="text-4xl font-extrabold text-slate-900">Our Core Focus Areas</h2>
+                   <p class="mt-4 text-xl text-slate-600 max-w-4xl mx-auto">Our strategy is built on three pillars for immediate impact and long-term behavioral change. Click a card to read <strong>real-life case studies</strong> and <strong>actionable safety tips</strong>.</p>
+               </div>
+               <div class="mt-12 grid gap-8 md:grid-cols-3">
+                   <div class="focus-card p-6 border-2 border-slate-100 rounded-xl shadow-lg bg-white hover:shadow-2xl hover:border-amber-500 hover:-translate-y-2 transition-all duration-300 cursor-pointer" data-target="Gear">
+                       <div class="flex items-center justify-center h-14 w-14 rounded-full bg-amber-100 text-amber-600 text-3xl font-bold mb-4">🛡️</div>
+                       <h3 class="text-xl font-bold text-slate-800">Protective Gear Mandate</h3>
+                       <p class="mt-2 text-slate-600">Promoting the consistent use of seatbelts and helmets, ensuring compliance is not an option, but a mandatory standard.</p>
+                   </div>
+                   <div class="focus-card p-6 border-2 border-slate-100 rounded-xl shadow-lg bg-white hover:shadow-2xl hover:border-amber-500 hover:-translate-y-2 transition-all duration-300 cursor-pointer" data-target="Speed">
+                       <div class="flex items-center justify-center h-14 w-14 rounded-full bg-amber-100 text-amber-600 text-3xl font-bold mb-4">️⏱️</div>
+                       <h3 class="text-xl font-bold text-slate-800">Speed Management</h3>
+                       <p class="mt-2 text-slate-600">Educating drivers on adhering to speed limits and the dangers of rash, aggressive driving that minimizes reaction time.</p>
+                   </div>
+                   <div class="focus-card p-6 border-2 border-slate-100 rounded-xl shadow-lg bg-white hover:shadow-2xl hover:border-amber-500 hover:-translate-y-2 transition-all duration-300 cursor-pointer" data-target="Impaired">
+                       <div class="flex items-center justify-center h-14 w-14 rounded-full bg-amber-100 text-amber-600 text-3xl font-bold mb-4">🍷</div>
+                       <h3 class="text-xl font-bold text-slate-800">Impaired Driving Prevention</h3>
+                       <p class="mt-2 text-slate-600">Advocating for zero tolerance towards drunk, drugged, or excessively fatigued driving through awareness and strict enforcement.</p>
+                   </div>
+               </div>
+
+
+               <!-- Dynamic Detail Panel - Styling enhanced -->
+               <div id="detail-panel" class="mt-12 p-8 bg-slate-100 rounded-2xl shadow-2xl border border-slate-200 hidden transition-all duration-500">
+                   <h3 id="detail-title" class="text-3xl font-extrabold text-slate-900 mb-6 border-b pb-3"></h3>
+                   <div class="grid lg:grid-cols-2 gap-10">
+                       <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-amber-600">
+                           <h4 class="text-2xl font-bold text-slate-800 mb-3">Case Study: <span id="case-study-title" class="text-amber-700"></span></h4>
+                           <p id="case-study-text" class="text-slate-700 leading-relaxed"></p>
+                       </div>
+                       <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-amber-600">
+                           <h4 class="text-2xl font-bold text-slate-800 mb-4">Actionable Do's and Don'ts</h4>
+                           <div class="space-y-6">
+                               <div id="dos-list">
+                                   <h5 class="font-extrabold text-xl text-green-700 border-b pb-1">✔️ DO'S</h5>
+                                   <ul id="dos-items" class="list-disc pl-5 text-slate-700 space-y-2 mt-3"></ul>
+                               </div>
+                               <div id="donts-list">
+                                   <h5 class="font-extrabold text-xl text-red-700 border-b pb-1">❌ DON'TS</h5>
+                                   <ul id="donts-items" class="list-disc pl-5 text-slate-700 space-y-2 mt-3"></ul>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+              
+           </div>
+       </section>
+
+
+       <!-- Data Dashboard Section - Styling enhanced -->
+       <section id="data" class="py-16 sm:py-24 bg-slate-50">
+           <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+               <div class="text-center">
+                   <h2 class="text-4xl font-extrabold text-slate-900">Visualizing the Impact</h2>
+                   <p class="mt-4 text-xl text-slate-600 max-w-3xl mx-auto">This chart illustrates the leading causes of road fatalities. Click on a focus area card above to see its direct connection to the data.</p>
+               </div>
+               <div class="mt-12 max-w-4xl mx-auto bg-white p-6 sm:p-8 rounded-2xl shadow-2xl border-t-4 border-slate-300">
+                   <div class="flex justify-center mb-4">
+                      <p id="chart-feedback" class="text-center text-slate-600 font-bold h-6 transition-opacity duration-300 opacity-0">Highlighting data for: <span id="feedback-target" class="font-extrabold text-amber-600"></span></p>
+                   </div>
+                   <div class="chart-container">
+                       <canvas id="safetyChart"></canvas>
+                   </div>
+               </div>
+           </div>
+       </section>
+
+
+       <!-- Contact/CTA Section - Styling enhanced -->
+       <section id="contact" class="py-16 sm:py-24 bg-amber-600 text-white">
+           <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+               <h2 class="text-4xl font-extrabold">Ready to Drive Change?</h2>
+               <p class="mt-4 text-xl text-amber-100">
+                   Join us in promoting road safety and accessing secure vehicle services like HSRP booking.
+               </p>
+               <div class="mt-8">
+                   <!-- CONTACT BUTTON LINK UPDATED TO USE PATH: /contact -->
+                   <a href="https://hspbooking.com/contact" target="_blank" class="inline-block bg-white text-amber-700 font-extrabold text-lg py-4 px-10 rounded-full shadow-2xl hover:bg-amber-50 transition-transform hover:scale-105 transform">
+                       Get In Touch Today
+                   </a>
+               </div>
+           </div>
+       </section>
+   </main>
+  
+   <footer class="bg-slate-900 text-slate-400 py-10">
+       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+           <!-- Footer links updated to use paths on the main domain -->
+           <div class="flex flex-wrap justify-center space-x-6 mb-4 text-base font-medium">
+               <a href="https://hspbooking.com/about" target="_blank" class="hover:text-amber-500 transition-colors">About Us</a>
+               <a href="https://hspbooking.com/contact" target="_blank" class="hover:text-amber-500 transition-colors">Contact Us</a>
+               <a href="https://hspbooking.com/hsrp" target="_blank" class="hover:text-amber-500 transition-colors font-extrabold text-amber-300">HSRP Booking</a>
+           </div>
+           <p class="mt-4 text-slate-500">&copy; 2025 HSPBooking. All rights reserved.</p>
+           <p class="mt-1 text-sm text-slate-500">A Commitment to Secure Roads and Safe Lives.</p>
+       </div>
+   </footer>
+
+
+   <script>
+       document.addEventListener('DOMContentLoaded', () => {
+           // Chart Data Setup
+           const chartData = {
+               labels: ['Speeding (30%)', 'Impaired Driving (28%)', 'Distracted Driving (18%)', 'No Protective Gear (15%)', 'Other Causes (9%)'],
+               datasets: [{
+                   label: 'Primary Cause of Fatalities (%)',
+                   data: [30, 28, 18, 15, 9],
+                   backgroundColor: [
+                       'rgba(59, 130, 246, 0.8)', // Blue for key issues
+                       'rgba(59, 130, 246, 0.8)',
+                       'rgba(59, 130, 246, 0.8)',
+                       'rgba(59, 130, 246, 0.8)',
+                       'rgba(107, 114, 128, 0.7)', // Gray for others
+                   ],
+                   borderColor: [
+                       'rgba(59, 130, 246, 1)',
+                       'rgba(59, 130, 246, 1)',
+                       'rgba(59, 130, 246, 1)',
+                       'rgba(59, 130, 246, 1)',
+                       'rgba(107, 114, 128, 1)',
+                   ],
+                   borderWidth: 1
+               }]
+           };
+
+
+           const baseColors = chartData.datasets[0].backgroundColor.slice();
+           const highlightColor = 'rgba(245, 158, 11, 1)'; // Amber highlight
+           const highlightBorderColor = 'rgba(180, 83, 9, 1)'; // Darker amber border
+
+
+           const ctx = document.getElementById('safetyChart').getContext('2d');
+           const safetyChart = new Chart(ctx, {
+               type: 'bar',
+               data: chartData,
+               options: {
+                   responsive: true,
+                   maintainAspectRatio: false,
+                   indexAxis: 'y', // Horizontal bars for better readability
+                   scales: {
+                       x: {
+                           beginAtZero: true,
+                           max: 35,
+                           grid: { display: false },
+                           title: {
+                               display: true,
+                               text: 'Percentage of Fatalities (%)',
+                               font: { weight: 'bold' }
+                           },
+                           ticks: {
+                               color: '#475569'
+                           }
+                       },
+                       y: {
+                           grid: { color: 'rgba(203, 213, 225, 0.5)' },
+                           ticks: {
+                               autoSkip: false,
+                               color: '#1e293b',
+                               font: { weight: '600' }
+                           }
+                       }
+                   },
+                   plugins: {
+                       legend: { display: false },
+                       tooltip: {
+                           backgroundColor: 'rgba(30, 41, 59, 0.9)',
+                           titleFont: { weight: 'bold' },
+                           bodyFont: { weight: '600' },
+                           cornerRadius: 6,
+                           callbacks: {
+                               label: function(context) {
+                                   // Extracting original label for cleaner tooltip
+                                   const rawLabel = chartData.labels[context.dataIndex].split(' (')[0];
+                                   return ` ${rawLabel}: ${context.raw}%`;
+                               }
+                           }
+                       }
+                   },
+                   animation: {
+                       duration: 1200, // Smoother animation
+                       easing: 'easeInOutQuart'
+                   }
+               }
+           });
+
+
+           // Content Map for Dynamic Panel
+           const contentMap = {
+               'Gear': {
+                   title: "The Simple Click That Saves Lives: Protective Gear",
+                   caseTitle: "The Split Second That Saved Sarah",
+                   caseText: "It's the quick five-minute drive to the grocery store where most accidents happen. Sarah thought she could skip the helmet, but a sudden crash left her with a severe head injury. The paramedics kept repeating, 'It was just right there.' The regret of knowing a simple action would have prevented it all is the worst punishment. Protective gear isn't a suggestion; it's your only shield.",
+                   dos: ["Always check your seatbelt's lock and snugness before driving.", "Ensure rear-seat passengers (especially children) use seatbelts correctly.", "Invest in an ISI-marked, properly-fitting helmet; a loose helmet is useless."],
+                   donts: ["Never rely on the shoulder belt only; the lap belt must be low across your hips.", "Use a child's seatbelt across the neck or under the arm; use a booster seat if needed.", "Carry more passengers than your vehicle has certified safety gear for."],
+                   chartLabel: 'No Protective Gear (15%)' // Use the full label for matching
+               },
+               'Speed': {
+                   title: "Control is Not an Option, It's the Requirement: Speed Management",
+                   caseTitle: "The Cost of Being 'Almost Late'",
+                   caseText: "Mark thought he was a great driver, capable of handling 20 km/h over the limit. He didn't account for the wet patch on the bridge. The extra speed meant his car covered an extra 50 feet before his brain processed the danger, resulting in a severe crash. Speed drastically cuts down your *survival time*. Slow down. The only thing you should be rushing towards is home.",
+                   dos: ["Scan the road far ahead to anticipate braking needs and avoid sudden stops.", "Maintain the three-second rule distance, increasing it to five seconds in poor conditions.", "Consciously ease off the gas when entering urban or residential zones."],
+                   donts: ["Accelerate immediately after seeing a speed limit sign change; smoothly transition your speed.", "Tailgate—it's aggressive and removes all your reaction cushion.", "Drive the limit simply because others are; if conditions are poor, drive slower."],
+                   chartLabel: 'Speeding (30%)'
+               },
+               'Impaired': {
+                   title: "Zero Tolerance: Clear Head, Clear Road",
+                   caseTitle: "More Than Just Alcohol",
+                   caseText: "Sarah took an over-the-counter flu pill and drove to work. The medication wasn't illegal, but it made her drowsy. When a deer jumped onto the road, she hit the gas instead of the brake. Impaired driving means *any* time your capacity is reduced, whether by alcohol, medication, or severe sleep deprivation. If you're not 100%, do not drive.",
+                   dos: ["Pre-book a ride-share or taxi *before* consuming alcohol.", "Read the labels on *all* medication (even over-the-counter) for driving warnings.", "Be honest about fatigue; pull over immediately if you feel drowsy."],
+                   donts: ["Let an impaired friend drive; insist on taking their keys or arranging a safe ride.", "Try to 'tough it out' for the last few miles when drowsy.", "Assume that because a medication is legal, it is safe to drive while taking it."],
+                   chartLabel: 'Impaired Driving (28%)'
+               }
+           };
+
+
+           const focusCards = document.querySelectorAll('.focus-card');
+           const chartFeedback = document.getElementById('chart-feedback');
+           const feedbackTarget = document.getElementById('feedback-target');
+           const detailPanel = document.getElementById('detail-panel');
+           const detailTitle = document.getElementById('detail-title');
+           const caseStudyTitle = document.getElementById('case-study-title');
+           const caseStudyText = document.getElementById('case-study-text');
+           const dosItems = document.getElementById('dos-items');
+           const dontsItems = document.getElementById('donts-items');
+           let activeTarget = null;
+           let resetTimer;
+
+
+           focusCards.forEach(card => {
+               card.addEventListener('click', () => {
+                   const targetKey = card.getAttribute('data-target');
+                  
+                   clearTimeout(resetTimer);
+                  
+                   if (activeTarget === targetKey) {
+                       resetChartColors();
+                       hideDetailPanel();
+                       activeTarget = null;
+                       return;
+                   }
+
+
+                   activeTarget = targetKey;
+                   const content = contentMap[targetKey];
+                  
+                   highlightChartBar(content.chartLabel);
+                   updateDetailPanel(content);
+               });
+           });
+
+
+           function updateDetailPanel(content) {
+               detailTitle.textContent = content.title;
+               caseStudyTitle.textContent = content.caseTitle;
+               caseStudyText.textContent = content.caseText;
+
+
+               dosItems.innerHTML = content.dos.map(item => `<li>${item}</li>`).join('');
+               dontsItems.innerHTML = content.donts.map(item => `<li>${item}</li>`).join('');
+              
+               showDetailPanel();
+           }
+
+
+           function showDetailPanel() {
+               detailPanel.classList.remove('hidden');
+               detailPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+           }
+
+
+           function hideDetailPanel() {
+               // Ensure a smooth exit animation before hiding
+               detailPanel.classList.add('opacity-0');
+               setTimeout(() => {
+                   detailPanel.classList.add('hidden');
+                   detailPanel.classList.remove('opacity-0');
+               }, 300);
+           }
+
+
+           function highlightChartBar(label) {
+               const newBackgroundColors = [...baseColors];
+               const newBorderColors = [...chartData.datasets[0].borderColor.slice()];
+
+
+               const index = chartData.labels.indexOf(label);
+
+
+               if (index !== -1) {
+                   // Highlight the selected bar with Amber
+                   newBackgroundColors[index] = highlightColor;
+                   newBorderColors[index] = highlightBorderColor;
+                  
+                   // Dim others slightly to bring focus to the highlighted bar
+                   for (let i = 0; i < newBackgroundColors.length; i++) {
+                       if (i !== index) {
+                           newBackgroundColors[i] = 'rgba(59, 130, 246, 0.3)'; // Lighter blue/dim
+                           newBorderColors[i] = 'rgba(59, 130, 246, 0.6)';
+                       }
+                   }
+               }
+              
+               safetyChart.data.datasets[0].backgroundColor = newBackgroundColors;
+               safetyChart.data.datasets[0].borderColor = newBorderColors;
+               safetyChart.update();
+
+
+               feedbackTarget.textContent = label.split(' (')[0];
+               chartFeedback.classList.remove('opacity-0');
+
+
+               resetTimer = setTimeout(() => {
+                   resetChartColors();
+                   activeTarget = null;
+                   hideDetailPanel();
+               }, 15000); // Increased time before auto-reset
+           }
+
+
+           function resetChartColors() {
+               safetyChart.data.datasets[0].backgroundColor = baseColors;
+               safetyChart.data.datasets[0].borderColor = chartData.datasets[0].borderColor.slice();
+               safetyChart.update();
+               chartFeedback.classList.add('opacity-0');
+           }
+
+
+           // Scroll Effect for Header
+           const header = document.getElementById('header');
+           window.addEventListener('scroll', () => {
+               if(window.scrollY > 50) {
+                    header.classList.add('h-14', 'header-scrolled');
+                    header.classList.remove('h-16');
+               } else {
+                   header.classList.add('h-16');
+                   header.classList.remove('h-14', 'header-scrolled');
+               }
+           });
+       });
+   </script>
+</body>
+</html>

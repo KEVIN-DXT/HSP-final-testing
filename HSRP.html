@@ -1,0 +1,753 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>HSRP NUMBER PLATE - Official Booking Service</title>
+   <!-- Load Tailwind CSS -->
+   <script src="https://cdn.tailwindcss.com"></script>
+   <!-- Load Inter Font -->
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+   <style>
+       body {
+           font-family: 'Inter', sans-serif;
+           background-color: #f0f4f8; /* Light background matching the site */
+       }
+       /* Deep Blue from Screenshot */
+       .primary-blue {
+           background-color: #1a3478;
+       }
+       .primary-text-blue {
+           color: #1a3478;
+       }
+       /* Bright Yellow from Screenshot */
+       .primary-yellow {
+           background-color: #FFC300;
+       }
+       .primary-text-yellow {
+           color: #FFC300;
+       }
+       .service-card {
+           min-height: 200px;
+           box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+           display: flex;
+           flex-direction: column;
+           justify-content: space-between;
+           color: #374151; /* Dark gray text */
+       }
+       /* Blue Button (for Yellow Cards) */
+       .action-button-blue {
+           background-color: #1a3478;
+           transition: all 0.3s ease;
+           color: white;
+           font-weight: 700;
+       }
+       .action-button-blue:hover {
+           background-color: #142a5c;
+       }
+       /* Yellow Button (for Blue Cards/Form) */
+       .action-button-yellow {
+           background-color: #FFC300;
+           transition: all 0.3s ease;
+           color: #1a3478; /* Yellow button has blue text */
+           font-weight: 700;
+       }
+       .action-button-yellow:hover {
+           background-color: #ffda6a;
+       }
+       /* Form Specific Styles */
+       .form-card {
+           box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+           border-radius: 0.5rem;
+       }
+       .form-input {
+           padding: 0.75rem 1rem;
+           border-width: 1px;
+           border-color: #d1d5db; /* Gray-300 */
+           border-radius: 0.5rem;
+           width: 100%;
+           transition: border-color 0.15s ease-in-out;
+       }
+       .form-input:focus {
+           outline: none;
+           border-color: #1a3478; /* Primary Blue on focus */
+       }
+       .progress-bar {
+           height: 8px;
+           background-color: #d1d5db;
+           border-radius: 4px;
+           overflow: hidden;
+           margin-bottom: 2rem;
+       }
+       .progress-fill {
+           height: 100%;
+           background-color: #1a3478; /* Primary Blue */
+           transition: width 0.4s ease;
+       }
+       /* Added for text size adjustment on mobile for title */
+       @media (max-width: 640px) {
+           h1.text-xl {
+               font-size: 1.5rem; /* Slightly larger on small screens */
+           }
+       }
+   </style>
+</head>
+<body>
+
+
+   <!-- Header & Navigation Bar -->
+   <header class="primary-blue shadow-xl">
+       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div class="flex justify-center items-center py-4">
+               <!-- Title is centered and font size is responsive -->
+               <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-wider">HSRP NUMBER PLATE</h1>
+           </div>
+       </div>
+   </header>
+  
+   <!-- Sub-Navigation for Home and Tracking -->
+   <div class="primary-blue shadow-md">
+       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <nav class="flex space-x-6">
+               <a href="#" onclick="showHome(event)" class="text-white border-b-2 border-white py-2 font-medium transition duration-150">Home</a>
+               <a href="#" class="text-white hover:text-indigo-200 py-2 font-medium transition duration-150">Track Order</a>
+           </nav>
+       </div>
+   </div>
+  
+   <main class="py-12 px-4 sm:px-6 lg:px-8">
+       <div class="max-w-7xl mx-auto">
+
+
+           <!-- HOME PAGE: Service Grid (Visible by default) -->
+           <div id="home-page">
+               <!-- Main Service Grid (Stacks on mobile, 2 cols on md, 3 cols on lg) -->
+               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+
+                   <!-- Card 1: HSRP with Colour Sticker (YELLOW CARD, BLUE BUTTON) -->
+                   <div class="service-card primary-yellow rounded-xl p-6 hover:shadow-2xl transition duration-300">
+                       <div>
+                           <div class="text-4xl mb-4 primary-text-blue">
+                               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5M12 15h1.5m-1.5 3h3m-7.5 3h7.5M12 3v3m-3 9.75v-3m0 0l-3.25-3.25M12 12l3.25 3.25" /></svg>
+                           </div>
+                           <h3 class="text-xl font-bold primary-text-blue mb-2">HSRP with Colour Sticker</h3>
+                           <p class="text-gray-700 mb-4 text-sm">Fresh HSRP and mandatory sticker for all vehicle types.</p>
+                       </div>
+                       <a href="#" onclick="startBooking(event)" class="action-button-blue text-white py-2 px-4 rounded-lg font-semibold text-center mt-4">
+                           Book →
+                       </a>
+                   </div>
+
+
+                   <!-- Card 2: Replacement/Retain/Transfer (BLUE CARD, YELLOW BUTTON) -->
+                   <div class="service-card primary-blue rounded-xl p-6 hover:shadow-2xl transition duration-300 text-white">
+                       <div>
+                           <div class="text-4xl mb-4 primary-text-yellow">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 18H7.5" /></svg>
+                           </div>
+                           <h3 class="text-xl font-bold text-white mb-2">Replacement/Retain/Transfer</h3>
+                           <p class="text-indigo-200 mb-4 text-sm">Plates for damaged or transfer cases.</p>
+                       </div>
+                       <a href="#" onclick="startBooking(event)" class="action-button-yellow primary-text-blue py-2 px-4 rounded-lg font-semibold text-center mt-4">
+                           Click Here →
+                       </a>
+                   </div>
+
+
+                   <!-- Card 3: Plate for Electric Vehicle (BLUE CARD, YELLOW BUTTON) -->
+                   <div class="service-card primary-blue rounded-xl p-6 hover:shadow-2xl transition duration-300 text-white">
+                       <div>
+                           <div class="text-4xl mb-4 primary-text-yellow">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+                           </div>
+                           <h3 class="text-xl font-bold text-white mb-2">Plate for Electric Vehicle</h3>
+                           <p class="text-indigo-200 mb-4 text-sm">The unique green plate for electric vehicles.</p>
+                       </div>
+                       <a href="#" onclick="startBooking(event)" class="action-button-yellow primary-text-blue py-2 px-4 rounded-lg font-semibold text-center mt-4">
+                           Click Here →
+                       </a>
+                   </div>
+
+
+                   <!-- Card 4: Only Colour Sticker (YELLOW CARD, BLUE BUTTON) -->
+                   <div class="service-card primary-yellow rounded-xl p-6 hover:shadow-2xl transition duration-300">
+                       <div>
+                           <div class="text-4xl mb-4 primary-text-blue">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-1.5-4.5h.008v.008H17.5V6H19.5V4H17.5V6zM3 16.5h.008v.008H3V16.5zM12 6h.008v.008H12V6z" /></svg>
+                           </div>
+                           <h3 class="text-xl font-bold primary-text-blue mb-2">Only Colour Sticker</h3>
+                           <p class="text-gray-700 mb-4 text-sm">Only for the mandatory colour-coded fuel sticker.</p>
+                       </div>
+                       <a href="#" onclick="startBooking(event)" class="action-button-blue text-white py-2 px-4 rounded-lg font-semibold text-center mt-4">
+                           Click Here →
+                       </a>
+                   </div>
+                  
+                   <!-- Card 5: Plate for Tractor & Trailer (BLUE CARD, YELLOW BUTTON) -->
+                   <div class="service-card primary-blue rounded-xl p-6 hover:shadow-2xl transition duration-300 text-white">
+                       <div>
+                           <div class="text-4xl mb-4 primary-text-yellow">
+                               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21V9.75M8.25 21V7.5M12 21h4.5m-4.5 0H7.5M21 21v-8.25M21 21h-4.5m-4.5 0H12M3.75 12.75V15M3.75 12.75h3m-3 0v-2.25m-3-1.5h7.5m0-3.75H3.75m1.5 3.75v2.25" /></svg>
+                           </div>
+                           <h3 class="text-xl font-bold text-white mb-2">Plate for Tractor & Trailer</h3>
+                           <p class="text-indigo-200 mb-4 text-sm">HSRP for Tractor or Trailer vehicles.</p>
+                       </div>
+                       <a href="#" onclick="startBooking(event)" class="action-button-yellow primary-text-blue py-2 px-4 rounded-lg font-semibold text-center mt-4">
+                           Click Here →
+                       </a>
+                   </div>
+
+
+                    <!-- Card 6: Grievance Redressal (YELLOW CARD, BLUE BUTTON) -->
+                   <div class="service-card primary-yellow rounded-xl p-6 hover:shadow-2xl transition duration-300">
+                       <div>
+                           <div class="text-4xl mb-4 primary-text-blue">
+                               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 0012 5.25v2.25c2.19 0 4.2.859 5.727 2.386l-.736-.736m-1.294 3.791l2.57 2.57m-4.707 3.328l-2.57 2.57m-1.789-7.513l2.57 2.57" /></svg>
+                           </div>
+                           <h3 class="text-xl font-bold primary-text-blue mb-2">Grievance Redressal</h3>
+                           <p class="text-gray-700 mb-4 text-sm">Submit an enquiry or file a complaint regarding an order.</p>
+                       </div>
+                        <!-- Action Button for Grievance -->
+                       <a href="#" onclick="startBooking(event)" class="action-button-blue text-white py-2 px-4 rounded-lg font-semibold text-center mt-4">
+                           Enquiry →
+                       </a>
+                   </div>
+
+
+               </div>
+           </div>
+
+
+           <!-- BOOKING FORM PAGE: Multi-Step Flow (Starts Hidden) -->
+           <div id="booking-form" class="hidden max-w-2xl mx-auto bg-white form-card p-8 sm:p-10">
+
+
+               <!-- Progress Bar -->
+               <div class="progress-bar">
+                   <div id="progress-fill" class="progress-fill" style="width: 33%"></div>
+               </div>
+
+
+               <!-- Step Header -->
+               <div class="flex justify-between items-center text-sm font-semibold text-gray-500 mb-6">
+                   <span id="step-number">Step 1 of 3</span>
+                   <span id="progress-percent">33% Complete</span>
+               </div>
+
+
+               <!-- Step Content Container -->
+               <div id="step-content">
+                  
+                   <!-- STEP 1: Vehicle Information (वाहन जानकारी) -->
+                   <div id="step-1">
+                       <h2 class="text-2xl font-bold primary-text-blue mb-6">1. Vehicle Information (वाहन जानकारी)</h2>
+                       <div class="space-y-4">
+                          
+                           <!-- Registration Number -->
+                           <div>
+                               <label for="reg-number" class="block text-sm font-medium text-gray-700 mb-1">Registration Number* (उदाहरण: UP16XX1234)</label>
+                               <input type="text" placeholder="UP16XX1234" class="form-input" id="reg-number">
+                           </div>
+
+
+                           <!-- Chassis Number -->
+                           <div>
+                               <label for="chassis-number" class="block text-sm font-medium text-gray-700 mb-1">Chassis Number* (चैसिस के अंतिम 5 अंक)</label>
+                               <input type="number"
+                                      placeholder="Last 5 Digits"
+                                      class="form-input"
+                                      id="chassis-number"
+                                      oninput="limitInput(this, 5, true)"
+                                      maxlength="5"
+                                      inputmode="numeric">
+                           </div>
+
+
+                           <!-- Engine Number -->
+                           <div>
+                               <label for="engine-number" class="block text-sm font-medium text-gray-700 mb-1">Engine Number* (इंजन के अंतिम 5 अंक)</label>
+                               <input type="number"
+                                      placeholder="Last 5 Digits"
+                                      class="form-input"
+                                      id="engine-number"
+                                      oninput="limitInput(this, 5, true)"
+                                      maxlength="5"
+                                      inputmode="numeric">
+                           </div>
+
+
+                           <!-- Vehicle Type -->
+                           <div>
+                               <label for="vehicle-type" class="block text-sm font-medium text-gray-700 mb-1">Vehicle Type*</label>
+                               <select class="form-input text-gray-500" id="vehicle-type">
+                                   <option value="" disabled selected>Four Wheeler (Car/Jeep/Truck)</option>
+                                   <option value="four-wheeler">Four Wheeler (Car/Jeep/Truck)</option>
+                                   <option value="two-wheeler">Two Wheeler (Bike/Scooter)</option>
+                                   <option value="ev">Electric Vehicle</option>
+                                   <option value="tractor">Tractor/Trailer</option>
+                               </select>
+                           </div>
+                          
+                       </div>
+                       <div class="mt-8">
+                           <button onclick="goToStep(2)" class="action-button-yellow primary-text-blue w-full py-3 px-6 rounded-lg shadow-md hover:bg-yellow-400 focus:outline-none focus:ring-4 focus:ring-yellow-500 focus:ring-opacity-50">
+                               Proceed to Personal Details → (व्यक्तिगत विवरण पर जाऐं)
+                           </button>
+                       </div>
+                   </div>
+
+
+                   <!-- STEP 2: Owner Details (मालिक का विवरण) -->
+                   <div id="step-2" class="hidden">
+                       <h2 class="text-2xl font-bold primary-text-blue mb-6">2. Owner Details (मालिक का विवरण)</h2>
+                       <div class="space-y-4">
+                          
+                           <!-- Full Name -->
+                           <div>
+                               <label for="owner-name" class="block text-sm font-medium text-gray-700 mb-1">Full Name (RC के अनुसार पूरा नाम)*</label>
+                               <input type="text" placeholder="Full Name" class="form-input" id="owner-name">
+                           </div>
+                          
+                           <!-- Contact Number -->
+                           <div>
+                               <label for="contact-number" class="block text-sm font-medium text-gray-700 mb-1">Contact Number* (10 Digits)</label>
+                               <input type="tel"
+                                      placeholder="10 Digit Mobile Number"
+                                      class="form-input"
+                                      id="contact-number"
+                                      oninput="limitInput(this, 10, true)"
+                                      maxlength="10"
+                                      inputmode="numeric">
+                           </div>
+                          
+                           <!-- Email Address -->
+                           <div>
+                               <label for="email-address" class="block text-sm font-medium text-gray-700 mb-1">Email Address*</label>
+                               <input type="email" placeholder="Email Address" class="form-input" id="email-address">
+                           </div>
+
+
+                           <!-- Full Address -->
+                           <div>
+                               <label for="full-address" class="block text-sm font-medium text-gray-700 mb-1">Full Address (प्लेट डिलीवरी/फिटमेंट के लिए)*</label>
+                               <textarea placeholder="Full Address" class="form-input" rows="3" id="full-address"></textarea>
+                           </div>
+
+
+                           <!-- State/UT Selection -->
+                           <div>
+                               <label for="state-ut" class="block text-sm font-medium text-gray-700 mb-1">Select State/UT*</label>
+                               <select class="form-input text-gray-500" id="state-ut">
+                                   <option value="" disabled selected>Select State/UT</option>
+                                   <option value="AP">Andhra Pradesh</option>
+                                   <option value="AR">Arunachal Pradesh</option>
+                                   <option value="AS">Assam</option>
+                                   <option value="BR">Bihar</option>
+                                   <option value="CT">Chhattisgarh</option>
+                                   <option value="GA">Goa</option>
+                                   <option value="GJ">Gujarat</option>
+                                   <option value="HR">Haryana</option>
+                                   <option value="HP">Himachal Pradesh</option>
+                                   <option value="JH">Jharkhand</option>
+                                   <option value="KA">Karnataka</option>
+                                   <option value="KL">Kerala</option>
+                                   <option value="MP">Madhya Pradesh</option>
+                                   <option value="MH">Maharashtra</option>
+                                   <option value="MN">Manipur</option>
+                                   <option value="ML">Meghalaya</option>
+                                   <option value="MZ">Mizoram</option>
+                                   <option value="NL">Nagaland</option>
+                                   <option value="OD">Odisha</option>
+                                   <option value="PB">Punjab</option>
+                                   <option value="RJ">Rajasthan</option>
+                                   <option value="SK">Sikkim</option>
+                                   <option value="TN">Tamil Nadu</option>
+                                   <option value="TS">Telangana</option>
+                                   <option value="TR">Tripura</option>
+                                   <option value="UP">Uttar Pradesh</option>
+                                   <option value="UK">Uttarakhand</option>
+                                   <option value="WB">West Bengal</option>
+                                   <!-- Union Territories -->
+                                   <option value="AN">Andaman and Nicobar Islands</option>
+                                   <option value="CH">Chandigarh</option>
+                                   <option value="DN">Dadra and Nagar Haveli and Daman and Diu</option>
+                                   <option value="DL">Delhi</option>
+                                   <option value="JK">Jammu and Kashmir</option>
+                                   <option value="LD">Lakshadweep</option>
+                                   <option value="LA">Ladakh</option>
+                                   <option value="PY">Puducherry</option>
+                               </select>
+                           </div>
+                          
+                       </div>
+                       <!-- Responsive Button Group for Step 2 -->
+                       <div class="mt-8 flex flex-col space-y-4 md:flex-row md:justify-between md:space-x-4 md:space-y-0">
+                           <button onclick="goToStep(1)" class="w-full md:w-1/3 bg-gray-300 text-gray-700 py-3 px-6 rounded-lg font-semibold shadow-md hover:bg-gray-400 transition duration-300 order-2 md:order-1">
+                               ← Back
+                           </button>
+                           <button onclick="goToStep(3)" class="action-button-yellow primary-text-blue w-full md:w-2/3 py-3 px-6 rounded-lg shadow-md hover:bg-yellow-400 focus:outline-none focus:ring-4 focus:ring-yellow-500 focus:ring-opacity-50 order-1 md:order-2">
+                               Continue to Payment → (भुगतान के लिए आगे बढें)
+                           </button>
+                       </div>
+                   </div>
+
+
+                   <!-- STEP 3: Payment & Confirmation (भुगतान और पुष्टि) -->
+                   <div id="step-3" class="hidden">
+                       <h2 class="text-2xl font-bold primary-text-blue mb-6">3. Payment & Confirmation (भुगतान और पुष्टि)</h2>
+                      
+                       <p class="text-gray-700 mb-4 text-sm">भुगतान करने के लिए दिए गए QR कोड को स्कैन करें।</p>
+                       <p class="text-sm italic primary-text-blue mb-6">*Scan the QR code above to complete the payment.*</p>
+
+
+                       <!-- Mock QR Code Placeholder -->
+                       <div class="flex justify-center mb-8">
+                           <img src="https://placehold.co/150x150/000/FFF?text=QR+Code" onerror="this.onerror=null;this.src='https://placehold.co/150x150/808080/FFF?text=QR';" alt="QR Code for Payment" class="border border-gray-300 p-2 rounded-lg">
+                       </div>
+
+
+                       <!-- Amount Details (White card with yellow/blue text) -->
+                       <div class="p-4 rounded-lg bg-gray-50 border-t-4 border-b-4 primary-blue font-semibold mb-6">
+                           <div class="flex justify-between items-center border-b pb-2 mb-2">
+                               <span class="text-lg primary-text-blue">Total Amount Payable:</span>
+                               <span class="text-xl font-extrabold primary-text-blue">₹ 1,199.00</span>
+                           </div>
+                           <div class="text-sm space-y-1">
+                               <div class="flex justify-between text-gray-600">
+                                   <span>Plate & Sticker Cost (Base Price):</span>
+                                   <span>₹997.00</span>
+                               </div>
+                               <div class="flex justify-between text-red-500">
+                                   <span>Taxes (GST 18%):</span>
+                                   <span>₹180.00</span>
+                               </div>
+                               <div class="flex justify-between text-red-500">
+                                   <span>Service/Processing Fee:</span>
+                                   <span>₹22.00</span>
+                               </div>
+                           </div>
+                       </div>
+
+
+                       <!-- Payment Proof Section -->
+                       <div class="primary-yellow p-4 rounded-lg mb-6">
+                           <p class="font-bold text-gray-800">Payment proof is mandatory. Please upload the screenshot after making the payment.</p>
+                           <p class="text-sm text-gray-700">भुगतान के बाद स्क्रीनशॉट अपलोड करना अनिवार्य है।</p>
+                       </div>
+
+
+                       <div class="mt-6">
+                           <label for="payment-proof" class="block text-sm font-medium text-gray-700 mb-2">Upload Screenshot (स्क्रीनशॉट अपलोड करें)</label>
+                           <input type="file" id="payment-proof" class="w-full p-3 border border-gray-300 rounded-lg bg-white">
+                       </div>
+
+
+                       <!-- Responsive Button Group for Step 3 -->
+                       <div class="mt-8 flex flex-col space-y-4 md:flex-row md:justify-center md:space-x-4 md:space-y-0">
+                           <button onclick="goToStep(2)" class="w-full md:w-1/3 bg-gray-300 text-gray-700 py-3 px-6 rounded-lg font-semibold shadow-md hover:bg-gray-400 transition duration-300 order-2 md:order-1">
+                               ← Back
+                           </button>
+                           <!-- Final Confirmation button -->
+                           <button onclick="confirmFinalBooking()" class="action-button-blue w-full md:w-2/3 text-white py-3 px-6 rounded-lg font-semibold shadow-md hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 order-1 md:order-2">
+                               Submit & Confirm Booking
+                           </button>
+                       </div>
+                   </div>
+               </div>
+
+
+           </div>
+          
+           <!-- THANK YOU PAGE (Starts Hidden) -->
+           <div id="thank-you-page" class="hidden max-w-2xl mx-auto bg-white form-card p-8 sm:p-10 text-center">
+               <div class="primary-text-blue text-6xl mb-6 flex justify-center">
+                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 text-green-500">
+                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15L15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                   </svg>
+               </div>
+               <!-- 1. Requested Text is back and modified -->
+               <h2 class="text-3xl font-bold text-green-600 mb-4">आपकी बुकिंग सफलतापूर्वक दर्ज हो गई है।</h2>
+               <p class="text-gray-700 mb-6">कृपया सभी महत्वपूर्ण विवरण (ट्रैकिंग नंबर, डिलीवरी की अनुमानित तारीख) के लिए नीचे दिए गए निर्देश का पालन करें:</p>
+
+
+               <div class="border border-gray-200 rounded-xl p-6 bg-gray-50 text-left space-y-3">
+                   <div class="flex justify-between items-center border-b pb-2">
+                       <span class="font-semibold primary-text-blue">Booking Number (बुकिंग संख्या):</span>
+                       <span id="display-booking-number" class="text-xl font-extrabold primary-text-blue"></span>
+                   </div>
+                   <div class="flex justify-between items-center pt-2">
+                       <span class="font-semibold text-gray-700">Estimated Delivery/Fitting Time (अनुमानित समय):</span>
+                       <span class="text-lg font-bold text-red-600">14-21 Working Days</span>
+                   </div>
+               </div>
+              
+               <!-- 2. Removed emergency block and added new non-emergency text -->
+               <div class="mt-8 p-4 rounded-xl primary-yellow border-l-4 border-yellow-700">
+                   <p class="text-base font-extrabold primary-text-blue mb-1">
+                       For more info, please check your registered email.
+                   </p>
+                   <p class="text-sm font-semibold text-gray-800">
+                        अधिक जानकारी के लिए, कृपया अपना पंजीकृत ईमेल देखें।
+                   </p>
+               </div>
+               <!-- END: UPDATED TEXT BLOCK -->
+           </div>
+          
+       </div>
+   </main>
+
+
+   <!-- Footer -->
+   <footer class="mt-12 py-6 primary-blue text-center text-white text-sm">
+       HSRP NUMBER PLATE | All Rights Reserved 2024
+   </footer>
+
+
+   <!-- Error Message Box (Custom instead of alert) -->
+   <div id="error-message-box" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden z-50">
+       <div class="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full">
+           <div class="text-red-600 font-bold mb-3 flex items-center">
+               <svg class="w-6 h-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+               Error
+           </div>
+           <p id="error-text" class="text-gray-700"></p>
+           <button onclick="hideError()" class="mt-4 primary-blue text-white py-2 px-4 rounded-lg hover:bg-blue-800 transition duration-300">
+               Close
+           </button>
+       </div>
+   </div>
+
+
+
+
+   <script>
+       let currentStep = 1;
+
+
+       // Function to limit input to a maximum length and numeric only
+       function limitInput(input, maxLen, isNumeric) {
+           // 1. Enforce Numeric only if requested
+           if (isNumeric) {
+               // Remove non-digit characters
+               input.value = input.value.replace(/\D/g, '');
+           }
+           // 2. Limit length
+           if (input.value.length > maxLen) {
+               input.value = input.value.slice(0, maxLen);
+           }
+       }
+      
+       // Function to generate a random 13-digit number prefixed with 'HSRP'
+       function generateBookingNumber() {
+           const prefix = 'HSRP';
+           let digits = '';
+           for (let i = 0; i < 13; i++) {
+               // Generate a random digit (0-9)
+               digits += Math.floor(Math.random() * 10);
+           }
+           return prefix + digits;
+       }
+      
+       // Function to reset all form inputs
+       function resetForm() {
+           document.getElementById('reg-number').value = '';
+           document.getElementById('chassis-number').value = '';
+           document.getElementById('engine-number').value = '';
+           document.getElementById('vehicle-type').value = ''; // Resets to default selected option
+           document.getElementById('owner-name').value = '';
+           document.getElementById('contact-number').value = '';
+           document.getElementById('email-address').value = '';
+           document.getElementById('full-address').value = '';
+           document.getElementById('state-ut').value = ''; // Resets to default selected option
+          
+           // Clear the file input
+           document.getElementById('payment-proof').value = '';
+       }
+
+
+
+
+       // Function to toggle sections based on mode
+       function toggleSections(mode) {
+           const isHome = mode === 'home';
+           const isForm = mode === 'form';
+           const isThankYou = mode === 'thankyou';
+          
+           document.getElementById('home-page').classList.toggle('hidden', !isHome);
+           document.getElementById('booking-form').classList.toggle('hidden', !isForm);
+           document.getElementById('thank-you-page').classList.toggle('hidden', !isThankYou);
+       }
+
+
+       // Start booking by switching to the form
+       function startBooking(event) {
+           event.preventDefault();
+           toggleSections('form'); // Show Form
+           resetForm(); // Ensure form is clear when starting a new booking
+           goToStep(1); // Start at step 1
+           window.scrollTo({ top: 0, behavior: 'smooth' });
+       }
+      
+       // Go back to the home page (now hides thank you page too)
+       function showHome(event) {
+           event.preventDefault();
+           toggleSections('home'); // Show Home
+           currentStep = 1; // Reset step
+           updateFormUI();
+           window.scrollTo({ top: 0, behavior: 'smooth' });
+       }
+
+
+       function showError(message) {
+           document.getElementById('error-text').textContent = message;
+           document.getElementById('error-message-box').classList.remove('hidden');
+       }
+
+
+       function hideError() {
+           document.getElementById('error-message-box').classList.add('hidden');
+       }
+
+
+       function validateStep(step) {
+           if (step === 1) {
+               const reg = document.getElementById('reg-number').value.trim();
+               const chassis = document.getElementById('chassis-number').value.trim();
+               const engine = document.getElementById('engine-number').value.trim();
+               const type = document.getElementById('vehicle-type').value;
+
+
+               if (!reg || !chassis || !engine || !type) {
+                   showError('कृपया Step 1 में वाहन की सभी आवश्यक जानकारी भरें। (Please fill in all mandatory vehicle information fields in Step 1.)');
+                   return false;
+               }
+              
+               // New validation for 5 digits (Chassis/Engine)
+               if (chassis.length !== 5) {
+                    showError('Chassis Number में केवल 5 अंक होने चाहिए।');
+                    return false;
+               }
+               if (engine.length !== 5) {
+                    showError('Engine Number में केवल 5 अंक होने चाहिए।');
+                    return false;
+               }
+
+
+               return true;
+           }
+
+
+           if (step === 2) {
+               const name = document.getElementById('owner-name').value.trim();
+               const contact = document.getElementById('contact-number').value.trim();
+               const email = document.getElementById('email-address').value.trim();
+               const address = document.getElementById('full-address').value.trim();
+               const stateUt = document.getElementById('state-ut').value;
+
+
+               if (!name || !contact || !email || !address || !stateUt) {
+                   showError('कृपया Step 2 में अपना पूरा नाम, संपर्क नंबर, ईमेल, पता और राज्य/UT चुनें। (Please provide all mandatory details in Step 2.)');
+                   return false;
+               }
+
+
+               // New validation for 10 digits (Contact Number)
+               if (contact.length !== 10) {
+                    showError('Contact Number में केवल 10 अंक होने चाहिए।');
+                    return false;
+               }
+              
+               if (!email.includes('@') || !email.includes('.')) {
+                   showError('कृपया एक वैध ईमेल पता दर्ज करें। (Please enter a valid email address.)');
+                   return false;
+               }
+              
+               if (stateUt === "") {
+                   showError('कृपया अपना राज्य/UT चुनें। (Please select your State/UT.)');
+                   return false;
+               }
+
+
+               return true;
+           }
+           return true;
+       }
+
+
+       function updateFormUI() {
+           // Hide all steps
+           document.getElementById('step-1').classList.add('hidden');
+           document.getElementById('step-2').classList.add('hidden');
+           document.getElementById('step-3').classList.add('hidden');
+
+
+           // Show current step
+           if (currentStep >= 1 && currentStep <= 3) {
+               document.getElementById(`step-${currentStep}`).classList.remove('hidden');
+           }
+
+
+           // Update progress bar and text
+           let progress = 0;
+           if (currentStep === 1) progress = 33;
+           else if (currentStep === 2) progress = 67;
+           else if (currentStep === 3) progress = 100;
+          
+           document.getElementById('progress-fill').style.width = `${progress}%`;
+           document.getElementById('step-number').textContent = `Step ${currentStep} of 3`;
+           document.getElementById('progress-percent').textContent = `${progress}% Complete`;
+       }
+
+
+
+
+       function goToStep(step) {
+           // Validate the current step before moving forward
+           if (step > currentStep && !validateStep(currentStep)) {
+               return;
+           }
+          
+           currentStep = step;
+           updateFormUI();
+           window.scrollTo({ top: 0, behavior: 'smooth' });
+       }
+      
+       function confirmFinalBooking() {
+           const proof = document.getElementById('payment-proof');
+           if (!proof.files.length) {
+               showError('भुगतान प्रमाण (screenshot) अंतिम सबमिशन के लिए अनिवार्य है। (Payment proof screenshot is mandatory for final submission.)');
+               return;
+           }
+          
+           // 1. Generate Booking Number
+           const bookingNum = generateBookingNumber();
+
+
+           // 2. Update Thank You Page UI
+           document.getElementById('display-booking-number').textContent = bookingNum;
+          
+           // 3. Hide Form and Show Thank You Page
+           toggleSections('thankyou'); // Show Thank You Page
+          
+           // 4. Reset the form inputs for the next booking
+           resetForm();
+          
+           // Reset step to 1 for next time the booking form is opened
+           currentStep = 1;
+           updateFormUI();
+
+
+           // Scroll to top
+           window.scrollTo({ top: 0, behavior: 'smooth' });
+       }
+      
+       // Initialize the page view on load to ensure only the home page is visible
+       document.addEventListener('DOMContentLoaded', () => {
+           toggleSections('home');
+       });
+
+
+   </script>
+</body>
+</html>
